@@ -31,16 +31,16 @@ std::vector<T> vectorFromString(const std::basic_string<T> &str)
 class WindowsContext
 {
 public:
-    typedef HRESULT (*CreatePseudoConsolePtr)(
+    typedef HRESULT (WINAPI *CreatePseudoConsolePtr)(
             COORD size,         // ConPty Dimensions
             HANDLE hInput,      // ConPty Input
             HANDLE hOutput,	    // ConPty Output
             DWORD dwFlags,      // ConPty Flags
             HPCON* phPC);       // ConPty Reference
 
-    typedef HRESULT (*ResizePseudoConsolePtr)(HPCON hPC, COORD size);
+    typedef HRESULT (WINAPI *ResizePseudoConsolePtr)(HPCON hPC, COORD size);
 
-    typedef VOID (*ClosePseudoConsolePtr)(HPCON hPC);
+    typedef VOID (WINAPI *ClosePseudoConsolePtr)(HPCON hPC);
 
     WindowsContext()
         : createPseudoConsole(nullptr)
